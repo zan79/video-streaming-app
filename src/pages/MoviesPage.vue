@@ -44,7 +44,7 @@
 import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import { videos } from '../data/videos'
 
-const movieVideos = computed(() => videos.filter(video => video.category === 'Movies'))
+const movieVideos = videos
 const activeIndex = ref(0)
 let slideTimer = null
 

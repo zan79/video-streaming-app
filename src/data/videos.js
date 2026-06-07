@@ -2,7 +2,7 @@ export const videos = [
   {
     id: 1,
     title: 'Big Buck Bunny',
-    url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+    url: 'https://drive.google.com/file/d/1sbUaf0PRiZReYv6vUom6GvB0yFj5jJHF/view?usp=drive_link',
     type: 'MP4',
     category: 'Movies',
     banner: 'https://images.pexels.com/photos/917494/pexels-photo-917494.jpeg?auto=compress&cs=tinysrgb&w=1600',
@@ -13,8 +13,8 @@ export const videos = [
   {
     id: 2,
     title: 'Tears of Steel',
-    url: 'https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.m3u8',
-    type: 'HLS',
+    url: 'https://drive.google.com/file/d/1CYCTrvO2NDlMhLSAEnyJndguEnSEtexk/view?usp=drive_link',
+    type: 'MP$',
     category: 'Sci-Fi',
     banner: 'https://images.pexels.com/photos/169324/pexels-photo-169324.jpeg?auto=compress&cs=tinysrgb&w=1600',
     thumbnail: 'https://img.youtube.com/vi/09knFhG0AAI/hqdefault.jpg',
@@ -25,7 +25,7 @@ export const videos = [
     id: 3,
     title: 'Mux Test Stream',
     url: 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8',
-    type: 'HLS',
+    type: 'MP4',
     category: 'Documentary',
     banner: 'https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=1600',
     thumbnail: 'https://img.youtube.com/vi/x36xhzz/hqdefault.jpg',
@@ -35,7 +35,7 @@ export const videos = [
   {
     id: 4,
     title: 'Sintel Adventure',
-    url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4',
+    url: 'https://drive.google.com/file/d/1CYCTrvO2NDlMhLSAEnyJndguEnSEtexk/view?usp=drive_link',
     type: 'MP4',
     category: 'Movies',
     banner: 'https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?auto=compress&cs=tinysrgb&w=1600',

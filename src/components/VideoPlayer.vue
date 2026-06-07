@@ -1,39 +1,29 @@
 <template>
-  <div class="video-card">
-    <div class="video-header">
-      <div>
-        <h2>{{ source.title }}</h2>
-        <div class="video-meta-row">
-          <span>{{ source.channel }}</span>
-          <span>•</span>
-          <span>{{ source.views }} views</span>
-        </div>
-      </div>
-      <div class="video-actions">
-        <button type="button">Like</button>
-        <button type="button">Share</button>
-        <button type="button">Save</button>
-      </div>
+  <div>
+    <div class="video-container">
+      <iframe
+        v-if="isGoogleDriveUrl"
+        :src="getGoogleDriveEmbedUrl"
+        class="video-player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+      <video
+        v-else
+        ref="videoElement"
+        controls
+        playsinline
+        preload="metadata"
+        class="video-player"
+      ></video>
     </div>
 
-    <video
-      ref="videoElement"
-      controls
-      playsinline
-      preload="metadata"
-      class="video-player"
-    ></video>
-
-    <div class="video-description">
-      <p>{{ source.description }}</p>
-      <p class="video-source">Source URL: <a :href="source.url" target="_blank" rel="noreferrer">Open stream</a></p>
-    </div>
   </div>
 </template>
 
 <script>
 import Hls from 'hls.js'
-import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
+import { ref, watch, onMounted, onBeforeUnmount, computed } from 'vue'
 
 export default {
   name: 'VideoPlayer',
@@ -47,9 +37,39 @@ export default {
     const videoElement = ref(null)
     let hls = null
 
+    const isGoogleDriveUrl = computed(() => {
+      if (!props.source?.url) return false
+      return props.source.url.includes('drive.google.com')
+    })
+
+    const getGoogleDriveEmbedUrl = computed(() => {
+      if (!isGoogleDriveUrl.value) return ''
+      
+      const url = props.source.url
+      let fileId = null
+
+      // Extract file ID from various Google Drive URL formats
+      const patterns = [
+        /\/d\/([a-zA-Z0-9-_]+)/,  // /d/{FILE_ID}
+        /id=([a-zA-Z0-9-_]+)/     // ?id={FILE_ID}
+      ]
+
+      for (const pattern of patterns) {
+        const match = url.match(pattern)
+        if (match) {
+          fileId = match[1]
+          break
+        }
+      }
+
+      if (!fileId) return ''
+      
+      return `https://drive.google.com/file/d/${fileId}/preview`
+    })
+
     const attachSource = () => {
       const video = videoElement.value
-      if (!video || !props.source) return
+      if (!video || !props.source || isGoogleDriveUrl.value) return
 
       if (hls) {
         hls.destroy()
@@ -93,7 +113,9 @@ export default {
     })
 
     return {
-      videoElement
+      videoElement,
+      isGoogleDriveUrl,
+      getGoogleDriveEmbedUrl
     }
   }
 }
@@ -109,48 +131,28 @@ export default {
   flex-direction: column;
   gap: 18px;
 }
-.video-header {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-.video-header h2 {
-  margin: 0 0 10px;
-  font-size: clamp(1.5rem, 2vw, 2rem);
+.video-title {
+  margin: 0;
+  font-size: clamp(1.75rem, 2.2vw, 2.5rem);
   color: #fff;
 }
-.video-meta-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  color: #ccc;
-  font-size: 0.95rem;
-}
-.video-actions {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-.video-actions button {
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
-  background: #111;
-  color: #fff;
-  padding: 10px 16px;
-  cursor: pointer;
-}
-.video-actions button:hover {
-  background: #ff0000;
-}
-.video-player {
+.video-container {
+  position: relative;
   width: 100%;
+  max-width: 100%;
   aspect-ratio: 16 / 9;
-  min-height: 280px;
   border-radius: 20px;
   background: #000;
-  object-fit: cover;
+  overflow: hidden;
+}
+.video-player {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: inherit;
+  background: #000;
 }
 .video-description {
   display: flex;
@@ -162,21 +164,25 @@ export default {
   line-height: 1.7;
   color: #fff;
 }
-.video-source a {
-  color: #ff0000;
-  text-decoration: none;
-}
-.video-source a:hover {
-  text-decoration: underline;
-}
 @media (max-width: 640px) {
   .video-card {
-    padding: 18px;
+    padding: 8px;
   }
 
-  .video-actions {
-    width: 100%;
-    justify-content: flex-start;
+  .video-player {
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 520px) {
+  .video-player {
+    border-radius: 14px;
+  }
+}
+
+@media (max-width: 420px) {
+  .video-player {
+    border-radius: 12px;
   }
 }
 </style>
