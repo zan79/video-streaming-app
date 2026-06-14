@@ -1,10 +1,13 @@
 <template>
-  <div class="movie-page">
+   <div v-if="isLoading">
+    <p>Loading page data...</p>
+  </div>
+  <div v-else class="movie-page">
     <section class="movie-hero">
       <div class="hero-carousel">
         <div
           v-for="(movie, index) in movieVideos"
-          :key="movie.id"
+          :key="movie.file_code"
           class="hero-slide"
           :style="heroSlideStyle(movie, index)"
         ></div>
@@ -15,7 +18,7 @@
         <div class="hero-slides">
           <button
             v-for="(movie, index) in movieVideos"
-            :key="movie.id"
+            :key="movie.file_code"
             :class="['hero-dot', { active: index === activeIndex }]"
             @click="setSlide(index)"
             aria-label="Select slide"
@@ -28,10 +31,10 @@
       <router-link
         class="card"
         v-for="video in movieVideos"
-        :key="video.id"
-        :to="{ name: 'watch', params: { id: video.id } }"
+        :key="video.file_code"
+        :to="{ name: 'watch', params: { id: video.file_code } }"
       >
-        <div class="card-thumb" :style="{ backgroundImage: `url(${video.thumbnail})` }"></div>
+        <div class="card-thumb" :style="{ backgroundImage: `url(${video.single_img})` }"></div>
         <div class="card-meta">
           <p>{{ video.title }}</p>
         </div>
@@ -42,21 +45,36 @@
 
 <script setup>
 import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
-import { videos } from '../data/videos'
+import { videosList } from '../data/videos'
 
-const movieVideos = videos
+let movieVideos = []
 const activeIndex = ref(0)
 let slideTimer = null
 
+const isLoading = ref(true)
+
+async function importList() {
+  try {
+    movieVideos = await videosList;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }finally{
+    isLoading.value = false
+    console.log("movieVideos.length:", movieVideos.length)
+  }
+}
+
+
+
 function heroSlideStyle(movie, index) {
   return {
-    backgroundImage: `linear-gradient(to top, rgba(20,20,20,1) 12%, rgba(20,20,20,0.2) 45%, rgba(20,20,20,0)), url(${movie.banner || ''})`,
+    backgroundImage: `linear-gradient(to top, rgba(20,20,20,1) 12%, rgba(20,20,20,0.2) 45%, rgba(20,20,20,0)), url(${movie.single_img || ''})`,
     transform: `translateX(${(index - activeIndex.value) * 100}%)`
   }
 }
 
 function nextSlide() {
-  activeIndex.value = (activeIndex.value + 1) % movieVideos.value.length
+  activeIndex.value = (activeIndex.value + 1) % movieVideos.length
 }
 
 function setSlide(index) {
@@ -64,6 +82,7 @@ function setSlide(index) {
 }
 
 onMounted(() => {
+  importList()
   slideTimer = setInterval(nextSlide, 4500)
 })
 

@@ -1,148 +1,201 @@
-export const videos = [
-  {
-    id: 1,
-    title: 'Big Buck Bunny',
-    url: 'https://drive.google.com/file/d/1sbUaf0PRiZReYv6vUom6GvB0yFj5jJHF/view?usp=drive_link',
-    type: 'MP4',
-    category: 'Movies',
-    banner: 'https://images.pexels.com/photos/917494/pexels-photo-917494.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    thumbnail: 'https://img.youtube.com/vi/YE7VzlLtp-4/hqdefault.jpg',
-    views: '2.4M',
-    description: 'Enjoy this classic open-source animated short film with smooth playback and modern streaming support.'
-  },
-  {
-    id: 2,
-    title: 'Tears of Steel',
-    url: 'https://drive.google.com/file/d/1CYCTrvO2NDlMhLSAEnyJndguEnSEtexk/view?usp=drive_link',
-    type: 'MP$',
-    category: 'Sci-Fi',
-    banner: 'https://images.pexels.com/photos/169324/pexels-photo-169324.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    thumbnail: 'https://img.youtube.com/vi/09knFhG0AAI/hqdefault.jpg',
-    views: '1.1M',
-    description: 'Stream the sci-fi short film Tears of Steel with adaptive HLS playback and a responsive Vue interface.'
-  },
-  {
-    id: 3,
-    title: 'Mux Test Stream',
-    url: 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8',
-    type: 'MP4',
-    category: 'Documentary',
-    banner: 'https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    thumbnail: 'https://img.youtube.com/vi/x36xhzz/hqdefault.jpg',
-    views: '560K',
-    description: 'A technical test stream for HLS playback. Use this one to verify compatibility across devices.'
-  },
-  {
-    id: 4,
-    title: 'Sintel Adventure',
-    url: 'https://drive.google.com/file/d/1CYCTrvO2NDlMhLSAEnyJndguEnSEtexk/view?usp=drive_link',
-    type: 'MP4',
-    category: 'Movies',
-    banner: 'https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    thumbnail: 'https://img.youtube.com/vi/eRsGyueVLvQ/hqdefault.jpg',
-    views: '980K',
-    description: 'Experience the animated fantasy film Sintel with smooth playback and responsive streaming support.'
-  },
-  {
-    id: 5,
-    title: 'The Silent Frontier',
-    url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
-    type: 'MP4',
-    category: 'Movies',
-    banner: 'https://images.pexels.com/photos/7209280/pexels-photo-7209280.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    thumbnail: 'https://images.pexels.com/photos/7209280/pexels-photo-7209280.jpeg?auto=compress&cs=tinysrgb&w=400',
-    views: '1.1M',
-    description: 'A quiet drama set against a vast frontier, revealing secrets through powerful visuals.'
-  },
-  {
-    id: 6,
-    title: 'Speed Run',
-    url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
-    type: 'MP4',
-    category: 'Movies',
-    banner: 'https://images.pexels.com/photos/3586769/pexels-photo-3586769.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    thumbnail: 'https://images.pexels.com/photos/3586769/pexels-photo-3586769.jpeg?auto=compress&cs=tinysrgb&w=400',
-    views: '1.8M',
-    description: 'A high-adrenaline thriller where every second counts during a cross-country chase.'
-  },
-  {
-    id: 7,
-    title: 'Moonlit Melody',
-    url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
-    type: 'MP4',
-    category: 'Movies',
-    banner: 'https://images.pexels.com/photos/2335126/pexels-photo-2335126.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    thumbnail: 'https://images.pexels.com/photos/2335126/pexels-photo-2335126.jpeg?auto=compress&cs=tinysrgb&w=400',
-    views: '720K',
-    description: 'A romantic drama that unfolds over one unforgettable summer night.'
-  },
-  {
-    id: 8,
-    title: 'Neon Outlaws',
-    url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
-    type: 'MP4',
-    category: 'Movies',
-    banner: 'https://images.pexels.com/photos/2387878/pexels-photo-2387878.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    thumbnail: 'https://images.pexels.com/photos/2387878/pexels-photo-2387878.jpeg?auto=compress&cs=tinysrgb&w=400',
-    views: '1.2M',
-    description: 'A gritty crime thriller set under the glow of neon city lights, where every risk is a gamble.'
-  },
-  {
-    id: 9,
-    title: 'Starfall Venture',
-    url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4',
-    type: 'MP4',
-    category: 'Movies',
-    banner: 'https://images.pexels.com/photos/5865245/pexels-photo-5865245.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    thumbnail: 'https://images.pexels.com/photos/5865245/pexels-photo-5865245.jpeg?auto=compress&cs=tinysrgb&w=400',
-    views: '1.6M',
-    description: 'A space adventure about a daring crew racing to rescue a lost colony on the edge of the galaxy.'
-  },
-  {
-    id: 10,
-    title: 'Echo Lake',
-    url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
-    type: 'MP4',
-    category: 'Movies',
-    banner: 'https://images.pexels.com/photos/753626/pexels-photo-753626.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    thumbnail: 'https://images.pexels.com/photos/753626/pexels-photo-753626.jpeg?auto=compress&cs=tinysrgb&w=400',
-    views: '890K',
-    description: 'A contemplative drama centered on a grieving artist who finds hope by a tranquil mountain lake.'
-  },
-  {
-    id: 11,
-    title: 'Afterglow Run',
-    url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-    type: 'MP4',
-    category: 'Movies',
-    banner: 'https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    thumbnail: 'https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg?auto=compress&cs=tinysrgb&w=400',
-    views: '1.0M',
-    description: 'A romantic thriller about two strangers fleeing across the countryside after a chance encounter.'
-  },
-  {
-    id: 12,
-    title: 'Circuit Breaker',
-    url: 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8',
-    type: 'HLS',
-    category: 'Movies',
-    banner: 'https://images.pexels.com/photos/374023/pexels-photo-374023.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    thumbnail: 'https://images.pexels.com/photos/374023/pexels-photo-374023.jpeg?auto=compress&cs=tinysrgb&w=400',
-    views: '1.3M',
-    description: 'A techno-thriller set in a high-stakes hacking competition with everything on the line.'
-  },
-  {
-    id: 13,
-    title: 'Urban Pulse',
-    url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
-    type: 'MP4',
-    category: 'Movies',
-    banner: 'https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1600',
-    thumbnail: 'https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=400',
-    views: '1.7M',
-    description: 'An energetic urban drama about a young street artist navigating ambition, loyalty, and city life.'
+
+
+// export const videos = [
+//   {
+//     id: 1,
+//     title: 'Big Buck Bunny',
+//     url: 'https://drive.google.com/file/d/1sbUaf0PRiZReYv6vUom6GvB0yFj5jJHF/view?usp=drive_link',
+//     type: 'MP4',
+//     category: 'Movies',
+//     banner: 'https://images.pexels.com/photos/917494/pexels-photo-917494.jpeg?auto=compress&cs=tinysrgb&w=1600',
+//     thumbnail: 'https://img.youtube.com/vi/YE7VzlLtp-4/hqdefault.jpg',
+//     views: '2.4M',
+//     description: 'Enjoy this classic open-source animated short film with smooth playback and modern streaming support.'
+//   },
+//   {
+//     id: 2,
+//     title: 'Tears of Steel',
+//     url: 'https://drive.google.com/file/d/1CYCTrvO2NDlMhLSAEnyJndguEnSEtexk/view?usp=drive_link',
+//     type: 'MP$',
+//     category: 'Sci-Fi',
+//     banner: 'https://images.pexels.com/photos/169324/pexels-photo-169324.jpeg?auto=compress&cs=tinysrgb&w=1600',
+//     thumbnail: 'https://img.youtube.com/vi/09knFhG0AAI/hqdefault.jpg',
+//     views: '1.1M',
+//     description: 'Stream the sci-fi short film Tears of Steel with adaptive HLS playback and a responsive Vue interface.'
+//   },
+//   {
+//     id: 3,
+//     title: 'Mux Test Stream',
+//     url: 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8',
+//     type: 'MP4',
+//     category: 'Documentary',
+//     banner: 'https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=1600',
+//     thumbnail: 'https://img.youtube.com/vi/x36xhzz/hqdefault.jpg',
+//     views: '560K',
+//     description: 'A technical test stream for HLS playback. Use this one to verify compatibility across devices.'
+//   },
+//   {
+//     id: 4,
+//     title: 'Sintel Adventure',
+//     url: 'https://drive.google.com/file/d/1CYCTrvO2NDlMhLSAEnyJndguEnSEtexk/view?usp=drive_link',
+//     type: 'MP4',
+//     category: 'Movies',
+//     banner: 'https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?auto=compress&cs=tinysrgb&w=1600',
+//     thumbnail: 'https://img.youtube.com/vi/eRsGyueVLvQ/hqdefault.jpg',
+//     views: '980K',
+//     description: 'Experience the animated fantasy film Sintel with smooth playback and responsive streaming support.'
+//   },
+//   {
+//     id: 5,
+//     title: 'The Silent Frontier',
+//     url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+//     type: 'MP4',
+//     category: 'Movies',
+//     banner: 'https://images.pexels.com/photos/7209280/pexels-photo-7209280.jpeg?auto=compress&cs=tinysrgb&w=1600',
+//     thumbnail: 'https://images.pexels.com/photos/7209280/pexels-photo-7209280.jpeg?auto=compress&cs=tinysrgb&w=400',
+//     views: '1.1M',
+//     description: 'A quiet drama set against a vast frontier, revealing secrets through powerful visuals.'
+//   },
+//   {
+//     id: 6,
+//     title: 'Speed Run',
+//     url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+//     type: 'MP4',
+//     category: 'Movies',
+//     banner: 'https://images.pexels.com/photos/3586769/pexels-photo-3586769.jpeg?auto=compress&cs=tinysrgb&w=1600',
+//     thumbnail: 'https://images.pexels.com/photos/3586769/pexels-photo-3586769.jpeg?auto=compress&cs=tinysrgb&w=400',
+//     views: '1.8M',
+//     description: 'A high-adrenaline thriller where every second counts during a cross-country chase.'
+//   },
+//   {
+//     id: 7,
+//     title: 'Moonlit Melody',
+//     url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
+//     type: 'MP4',
+//     category: 'Movies',
+//     banner: 'https://images.pexels.com/photos/2335126/pexels-photo-2335126.jpeg?auto=compress&cs=tinysrgb&w=1600',
+//     thumbnail: 'https://images.pexels.com/photos/2335126/pexels-photo-2335126.jpeg?auto=compress&cs=tinysrgb&w=400',
+//     views: '720K',
+//     description: 'A romantic drama that unfolds over one unforgettable summer night.'
+//   },
+//   {
+//     id: 8,
+//     title: 'Neon Outlaws',
+//     url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+//     type: 'MP4',
+//     category: 'Movies',
+//     banner: 'https://images.pexels.com/photos/2387878/pexels-photo-2387878.jpeg?auto=compress&cs=tinysrgb&w=1600',
+//     thumbnail: 'https://images.pexels.com/photos/2387878/pexels-photo-2387878.jpeg?auto=compress&cs=tinysrgb&w=400',
+//     views: '1.2M',
+//     description: 'A gritty crime thriller set under the glow of neon city lights, where every risk is a gamble.'
+//   },
+//   {
+//     id: 9,
+//     title: 'Starfall Venture',
+//     url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4',
+//     type: 'MP4',
+//     category: 'Movies',
+//     banner: 'https://images.pexels.com/photos/5865245/pexels-photo-5865245.jpeg?auto=compress&cs=tinysrgb&w=1600',
+//     thumbnail: 'https://images.pexels.com/photos/5865245/pexels-photo-5865245.jpeg?auto=compress&cs=tinysrgb&w=400',
+//     views: '1.6M',
+//     description: 'A space adventure about a daring crew racing to rescue a lost colony on the edge of the galaxy.'
+//   },
+//   {
+//     id: 10,
+//     title: 'Echo Lake',
+//     url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+//     type: 'MP4',
+//     category: 'Movies',
+//     banner: 'https://images.pexels.com/photos/753626/pexels-photo-753626.jpeg?auto=compress&cs=tinysrgb&w=1600',
+//     thumbnail: 'https://images.pexels.com/photos/753626/pexels-photo-753626.jpeg?auto=compress&cs=tinysrgb&w=400',
+//     views: '890K',
+//     description: 'A contemplative drama centered on a grieving artist who finds hope by a tranquil mountain lake.'
+//   },
+//   {
+//     id: 11,
+//     title: 'Afterglow Run',
+//     url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+//     type: 'MP4',
+//     category: 'Movies',
+//     banner: 'https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg?auto=compress&cs=tinysrgb&w=1600',
+//     thumbnail: 'https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg?auto=compress&cs=tinysrgb&w=400',
+//     views: '1.0M',
+//     description: 'A romantic thriller about two strangers fleeing across the countryside after a chance encounter.'
+//   },
+//   {
+//     id: 12,
+//     title: 'Circuit Breaker',
+//     url: 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8',
+//     type: 'HLS',
+//     category: 'Movies',
+//     banner: 'https://images.pexels.com/photos/374023/pexels-photo-374023.jpeg?auto=compress&cs=tinysrgb&w=1600',
+//     thumbnail: 'https://images.pexels.com/photos/374023/pexels-photo-374023.jpeg?auto=compress&cs=tinysrgb&w=400',
+//     views: '1.3M',
+//     description: 'A techno-thriller set in a high-stakes hacking competition with everything on the line.'
+//   },
+//   {
+//     id: 13,
+//     title: 'Urban Pulse',
+//     url: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
+//     type: 'MP4',
+//     category: 'Movies',
+//     banner: 'https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1600',
+//     thumbnail: 'https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=400',
+//     views: '1.7M',
+//     description: 'An energetic urban drama about a young street artist navigating ambition, loyalty, and city life.'
+//   }
+// ]
+
+export var videosList = getFiles()
+let finalArray = [];
+// async function fetchToArray() {
+//   const url = "https://proxy.corsfix.com/?" +'https://doodapi.co/api/file/list?key=91911ohhco8r85284xvv8&fld_id=MOVIES';
+  
+//   try {
+//     const response = await fetch(url);
+    
+//     // Ensure the response is successful
+//     if (!response.ok) {
+//       throw new Error(`HTTP error! Status: ${response.status}`);
+//     }
+    
+//     // Parse JSON directly into your array
+//     const dataArray = await response.json(); 
+    
+//     // Use the array inside this block
+//     console.log('Array filled successfully:', dataArray);
+//     return dataArray;
+
+//   } catch (error) {
+//     console.error('Error fetching data:', error);
+//   }
+// }
+
+export async function getFiles() {
+  try {
+    const response = await fetch("https://proxy.corsfix.com/?" +'https://doodapi.co/api/file/list?key=91911ohhco8r85284xvv8&fld_id=MOVIES');
+    const data = await response.json();
+
+    // Store files array
+    const files = data.result.files;
+
+    console.log(files)
+    
+    finalArray.push(...files); 
+    return finalArray;
+  } catch (error) {
+    console.error('Error fetching data:', error)
+    return [];
   }
-]
+}
+
+
+
+
+
+
+
+
 
 export const shows = [
   {

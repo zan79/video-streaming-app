@@ -1,5 +1,8 @@
 <template>
-  <div class="watch-page">
+     <div v-if="isLoading">
+    <p>Loading page data...</p>
+  </div>
+  <div v-else class="watch-page">
     <div class="watch-header">
       <button class="back-btn" @click="goBack">↩ back</button>
       <h1>{{ source.title }}</h1>
@@ -18,7 +21,7 @@
         <div v-if="isMovie" class="watch-related">
           <h2>Other Movies</h2>
           <ul class="related-list">
-            <li v-for="movie in relatedMovies" :key="movie.id" @click="selectSource(movie.id)" class="related-item">
+            <li v-for="movie in relatedMovies" :key="movie.file_code" @click="selectSource(movie.file_code)" class="related-item">
               <span>{{ movie.title }}</span>
               <span class="related-meta">{{ movie.views }} views</span>
             </li>
@@ -28,7 +31,7 @@
         <div v-else-if="currentShow" class="watch-related">
           <h2>Episodes</h2>
           <ul class="related-list">
-            <li v-for="episode in showEpisodes" :key="episode.id" @click="selectSource(episode.id)" :class="{'active-episode': episode.id === videoId}" class="related-item">
+            <li v-for="episode in showEpisodes" :key="episode.file_code" @click="selectSource(episode.file_code)" :class="{'active-episode': episode.file_code === videoId}" class="related-item">
               <span>{{ episode.title }}</span>
               <span class="related-meta">{{ episode.duration }} · {{ episode.views }} views</span>
             </li>
@@ -40,21 +43,25 @@
 </template>
 
 <script setup>
-import { computed, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import VideoPlayer from '../components/VideoPlayer.vue'
-import { videos, shows } from '../data/videos'
+import { videosList, shows } from '../data/videos'
+
+let videos = []
 
 const router = useRouter()
 const route = useRoute()
-const videoId = computed(() => Number(route.params.id))
+const videoId = route.params.id
 
 const source = computed(() => {
-  const video = videos.find(video => video.id === videoId.value)
+  console.log("FIRST")
+  const video = videos.find(video => video.file_code === videoId)
   if (video) return video
+  console.log(videoId)
 
   for (const show of shows) {
-    const episode = show.episodes.find(ep => ep.id === videoId.value)
+    const episode = show.episodes.find(ep => ep.file_code === videoId)
     if (episode) {
       return {
         ...episode,
@@ -69,10 +76,28 @@ const source = computed(() => {
   return videos[0]
 })
 
-const isMovie = computed(() => videos.some(video => video.id === videoId.value))
-const currentShow = computed(() => shows.find(show => show.episodes.some(ep => ep.id === videoId.value)))
-const relatedMovies = computed(() => videos.filter(video => video.id !== videoId.value))
+const isMovie = computed(() => videos.some(video => video.file_code === videoId))
+const currentShow = computed(() => shows.find(show => show.episodes.some(ep => ep.file_code === videoId)))
+const relatedMovies = computed(() => videos.filter(video => video.file_code !== videoId))
 const showEpisodes = computed(() => currentShow.value?.episodes || [])
+
+onMounted(() => {
+  importList()
+})
+
+const isLoading = ref(true)
+
+async function importList() {
+  try {
+    videos = await videosList;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }finally{
+    isLoading.value = false
+    console.log("videos.length:", videos.length)
+  }
+}
+
 
 function selectSource(id) {
   router.push({ name: 'watch', params: { id } })
