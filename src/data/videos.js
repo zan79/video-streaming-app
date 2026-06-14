@@ -173,7 +173,7 @@ let finalArray = [];
 
 export async function getFiles() {
   try {
-    const response = await fetch("https://proxy.corsfix.com/?" +'https://doodapi.co/api/file/list?key=91911ohhco8r85284xvv8&fld_id=MOVIES');
+    const response = await fetch("https://proxy.corsfix.com/?" +'https://doodapi.co/api/file/list?fld_id=1786013&key=91911ohhco8r85284xvv8');
     const data = await response.json();
 
     // Store files array

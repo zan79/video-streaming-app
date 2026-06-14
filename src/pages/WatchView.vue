@@ -23,7 +23,7 @@
           <ul class="related-list">
             <li v-for="movie in relatedMovies" :key="movie.file_code" @click="selectSource(movie.file_code)" class="related-item">
               <span>{{ movie.title }}</span>
-              <span class="related-meta">{{ movie.views }} views</span>
+              <!-- <span class="related-meta">{{ movie.views }} views</span> -->
             </li>
           </ul>
         </div>
@@ -98,9 +98,18 @@ async function importList() {
   }
 }
 
+async function routeNew(id) {
+  try {
+    await router.push({ name: 'watch', params: { id } })
+  } catch (error) {
+    console.error('Error :', error);
+  }finally{
+window.location.reload();
+  }
+}
 
 function selectSource(id) {
-  router.push({ name: 'watch', params: { id } })
+  routeNew(id)
 }
 
 function goBack() {
